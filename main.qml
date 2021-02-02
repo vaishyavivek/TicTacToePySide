@@ -118,15 +118,16 @@ ApplicationWindow {
 
     Connections {
         target: solver
-        onMakeMove: {
+
+        function onMakeMove(index, player) {
             boardGrid.children[index].state = player
         }
 
-        onZeroWon: {
+        function onZeroWon() {
             gameFinished('0')
         }
 
-        onMatchDraw: {
+        function onMatchDraw() {
             messageDisplay.text = "Match Draw"
             messageDisplay.visible = true
             game.running = false

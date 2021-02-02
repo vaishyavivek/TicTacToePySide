@@ -177,6 +177,6 @@ if __name__ == "__main__":
 
     engine.load("main.qml")
 
-    if not engine.rootObjects():
-        sys.exit(-1)
+#    if not engine.rootObjects():
+#        sys.exit(-1)
     sys.exit(app.exec_())
