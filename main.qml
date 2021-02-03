@@ -78,6 +78,7 @@ ApplicationWindow {
 
             Timer {
                 running: messageDisplay.visible
+		interval: 5000
                 onTriggered: {
                     messageDisplay.visible = false;
                     restartGame();
