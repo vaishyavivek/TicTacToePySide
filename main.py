@@ -1,18 +1,17 @@
 # This Python file uses the following encoding: utf-8
 import sys
-import os
 import copy
 
 from PySide2.QtWidgets import QApplication
-from PySide2.QtCore import Qt, QCoreApplication, QObject, Slot, Signal, Property
-from PySide2.QtQml import QQmlApplicationEngine, QQmlDebuggingEnabler
+from PySide2.QtCore import QObject, Slot, Signal
+from PySide2.QtQml import QQmlApplicationEngine #, QQmlDebuggingEnabler
 
 
 class TicTacSolver(QObject):
     def __init__(self):
         super().__init__()
 
-    makeMove = Signal(int, str, arguments=['index', 'player']) #tell QML which move to make
+    makeMove = Signal(int, str, arguments=['index', 'player'])  # tell QML which move to make
 
     zeroWon = Signal()
 
@@ -98,11 +97,6 @@ class TicTacSolver(QObject):
                         self.zeroWon.emit()
                     return
 
-
-        for i in range(9):
-            boardCopy = copy.deepcopy(self.gridValues)
-
-            if boardCopy[i] == None: #can play at position
                 boardCopy[i] = 'X'
                 if self.isWinner2(boardCopy):
                     self.gridValues[i] = '0'
@@ -166,7 +160,7 @@ class TicTacSolver(QObject):
 
 
 if __name__ == "__main__":
-    QQmlDebuggingEnabler()
+    # QQmlDebuggingEnabler()
     app = QApplication(sys.argv)
 
     engine = QQmlApplicationEngine()
